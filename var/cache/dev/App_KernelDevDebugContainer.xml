@@ -309,13 +309,6 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\UserController"/>
       </call>
     </service>
-    <service id="App\Controller\UserDataController" class="App\Controller\UserDataController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\UserDataController"/>
-      </call>
-    </service>
     <service id="App\Controller\UserDataSQLController" class="App\Controller\UserDataSQLController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -335,15 +328,8 @@
     <service id="App\Form\Type\UserDataSQLUpdateType" class="App\Form\Type\UserDataSQLUpdateType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
-    <service id="App\Form\Type\UserDataType" class="App\Form\Type\UserDataType" autowire="true" autoconfigure="true">
-      <tag name="form.type"/>
-    </service>
     <service id="App\Form\Type\WelcomePageType" class="App\Form\Type\WelcomePageType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
-    </service>
-    <service id="App\Repository\DataUserSQLRepository" class="App\Repository\DataUserSQLRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -938,7 +924,6 @@
         <argument>App\Form\Type\TaskType</argument>
         <argument>App\Form\Type\UserDataSQLType</argument>
         <argument>App\Form\Type\UserDataSQLUpdateType</argument>
-        <argument>App\Form\Type\UserDataType</argument>
         <argument>App\Form\Type\WelcomePageType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -1850,7 +1835,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.AiioC0Q"/>
+      <argument type="service" id=".service_locator.9BaRCLd"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -3149,7 +3134,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.gcs4_gg"/>
+      <argument type="service" id=".service_locator.lpxgY.b"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -3779,9 +3764,6 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserDataController" class="App\Controller\UserDataController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserDataController" class="App\Controller\UserDataController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\UserDataController" class="App\Controller\UserDataController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserDataSQLController" class="App\Controller\UserDataSQLController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserDataSQLController" class="App\Controller\UserDataSQLController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\UserDataSQLController" class="App\Controller\UserDataSQLController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -3793,12 +3775,8 @@
     <service id=".abstract.instanceof.App\Form\Type\UserDataSQLType" class="App\Form\Type\UserDataSQLType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Type\UserDataSQLUpdateType" class="App\Form\Type\UserDataSQLUpdateType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\Type\UserDataSQLUpdateType" class="App\Form\Type\UserDataSQLUpdateType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Type\UserDataType" class="App\Form\Type\UserDataType" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Form\Type\UserDataType" class="App\Form\Type\UserDataType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Type\WelcomePageType" class="App\Form\Type\WelcomePageType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\Type\WelcomePageType" class="App\Form\Type\WelcomePageType" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\DataUserSQLRepository" class="App\Repository\DataUserSQLRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\DataUserSQLRepository" class="App\Repository\DataUserSQLRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ProductRepository" class="App\Repository\ProductRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserDataSQLRepository" class="App\Repository\UserDataSQLRepository" autowire="true" abstract="true"/>
@@ -4287,14 +4265,13 @@
       <argument type="service" id="argument_resolver.query_parameter_value_resolver"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.AiioC0Q" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.9BaRCLd" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\Type\LoginPageType" type="service_closure" id="App\Form\Type\LoginPageType"/>
         <argument key="App\Form\Type\TaskType" type="service_closure" id="App\Form\Type\TaskType"/>
         <argument key="App\Form\Type\UserDataSQLType" type="service_closure" id="App\Form\Type\UserDataSQLType"/>
         <argument key="App\Form\Type\UserDataSQLUpdateType" type="service_closure" id="App\Form\Type\UserDataSQLUpdateType"/>
-        <argument key="App\Form\Type\UserDataType" type="service_closure" id="App\Form\Type\UserDataType"/>
         <argument key="App\Form\Type\WelcomePageType" type="service_closure" id="App\Form\Type\WelcomePageType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
@@ -4435,10 +4412,9 @@
         <argument key="doctrine.orm.listeners.pdo_session_handler_schema_listener" type="service_closure" id="doctrine.orm.listeners.pdo_session_handler_schema_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.gcs4_gg" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.lpxgY.b" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Repository\DataUserSQLRepository" type="service_closure" id="App\Repository\DataUserSQLRepository"/>
         <argument key="App\Repository\ProductRepository" type="service_closure" id="App\Repository\ProductRepository"/>
         <argument key="App\Repository\UserDataSQLRepository" type="service_closure" id="App\Repository\UserDataSQLRepository"/>
       </argument>
@@ -4497,12 +4473,6 @@
     <service id=".service_locator.O2p6Lk7.App\Controller\UserController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\UserController"/>
       <argument>App\Controller\UserController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
-    </service>
-    <service id=".service_locator.O2p6Lk7.App\Controller\UserDataController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\UserDataController"/>
-      <argument>App\Controller\UserDataController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
@@ -5383,7 +5353,7 @@
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator.wkg7DlU" alias=".service_locator.ePVjyMz"/>
     <service id=".service_locator.zOrwI6F" alias=".service_locator.nrgc8tJ"/>
-    <service id=".service_locator.r6NJVxH" alias=".service_locator.AiioC0Q"/>
+    <service id=".service_locator.dPcWMhK" alias=".service_locator.9BaRCLd"/>
     <service id=".service_locator.LMuqDDe" alias=".service_locator.VHsrTPK"/>
     <service id=".service_locator.jUv.zyj" alias=".service_locator.O2p6Lk7"/>
     <service id="validator" alias="debug.validator"/>

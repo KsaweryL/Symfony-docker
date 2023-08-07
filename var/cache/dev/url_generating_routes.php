@@ -23,7 +23,6 @@ return [
     'app_product' => [[], ['_controller' => 'App\\Controller\\ProductController::index'], [], [['text', '/product']], [], [], []],
     'user_data_task' => [['email', 'password'], ['_controller' => 'App\\Controller\\TaskController::taskByEmail'], [], [['variable', '/', '[^/]++', 'password', true], ['variable', '/', '[^/]++', 'email', true], ['text', '/user_data_sql/task']], [], [], []],
     'task_success' => [[], ['_controller' => 'App\\Controller\\TaskController::success'], [], [['text', '/task_success']], [], [], []],
-    'app_userdata_new' => [[], ['_controller' => 'App\\Controller\\UserDataController::new'], [], [['text', '/user_data']], [], [], []],
     'app_userdatasql_welcome' => [[], ['_controller' => 'App\\Controller\\UserDataSQLController::welcome'], [], [['text', '/user_data_sql']], [], [], []],
     'user_data_login' => [[], ['_controller' => 'App\\Controller\\UserDataSQLController::login'], [], [['text', '/user_data_sql/login']], [], [], []],
     'app_userdatasql_new' => [[], ['_controller' => 'App\\Controller\\UserDataSQLController::new'], [], [['text', '/user_data_sql/add']], [], [], []],

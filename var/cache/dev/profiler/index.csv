@@ -1794,3 +1794,6 @@ a7eddd,172.26.0.1,POST,http://localhost:10301/user_data_sql/task/ksawery@gmail.c
 7ad431,172.26.0.1,GET,http://localhost:10301/task_success,1691415126,,200
 743f1e,172.26.0.1,GET,http://localhost:10301/user_data_sql/task/ksawery@gmail.com/despacito,1691415127,,200
 2e1520,172.26.0.1,GET,http://localhost:10301/user_data_sql/panel/ksawery@gmail.com/despacito,1691415129,,200
+59c672,172.26.0.1,GET,http://localhost:10301/user_data_sql/panel/ksawery@gmail.com/despacito,1691415957,,200
+352b9a,172.26.0.1,GET,http://localhost:10301/user_data_sql,1691415961,,200
+5f3d4c,172.26.0.1,GET,http://localhost:10301/user_data_sql/login,1691415964,,200

@@ -22,7 +22,6 @@ return [
             [['_route' => 'app_product', '_controller' => 'App\\Controller\\ProductController::index'], null, null, null, false, false, null],
         ],
         '/task_success' => [[['_route' => 'task_success', '_controller' => 'App\\Controller\\TaskController::success'], null, null, null, false, false, null]],
-        '/user_data' => [[['_route' => 'app_userdata_new', '_controller' => 'App\\Controller\\UserDataController::new'], null, null, null, false, false, null]],
         '/user_data_sql' => [[['_route' => 'app_userdatasql_welcome', '_controller' => 'App\\Controller\\UserDataSQLController::welcome'], null, null, null, false, false, null]],
         '/user_data_sql/login' => [[['_route' => 'user_data_login', '_controller' => 'App\\Controller\\UserDataSQLController::login'], null, null, null, false, false, null]],
         '/user_data_sql/add' => [[['_route' => 'app_userdatasql_new', '_controller' => 'App\\Controller\\UserDataSQLController::new'], null, null, null, false, false, null]],

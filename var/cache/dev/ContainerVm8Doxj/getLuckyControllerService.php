@@ -18,7 +18,7 @@ class getLuckyControllerService extends App_KernelDevDebugContainer
     public static function do($container, $lazyLoad = true)
     {
         include_once \dirname(__DIR__, 4).'/vendor/symfony/framework-bundle/Controller/AbstractController.php';
-        include_once \dirname(__DIR__, 4).'/src/Controller/LuckyController.php';
+        include_once \dirname(__DIR__, 4) . '/src/Controller/TestingController.php';
 
         $container->services['App\\Controller\\LuckyController'] = $instance = new \App\Controller\LuckyController();
 

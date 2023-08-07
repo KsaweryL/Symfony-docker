@@ -19,7 +19,6 @@ class getUserDataTypeService extends App_KernelDevDebugContainer
     {
         include_once \dirname(__DIR__, 4).'/vendor/symfony/form/FormTypeInterface.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/form/AbstractType.php';
-        include_once \dirname(__DIR__, 4).'/src/Form/Type/UserDataType.php';
 
         return $container->privates['App\\Form\\Type\\UserDataType'] = new \App\Form\Type\UserDataType();
     }

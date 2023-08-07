@@ -25,7 +25,6 @@ class getDataUserSQLRepositoryService extends App_KernelDevDebugContainer
         include_once \dirname(__DIR__, 4).'/vendor/symfony/var-exporter/LazyGhostTrait.php';
         include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/LazyServiceEntityRepository.php';
         include_once \dirname(__DIR__, 4).'/vendor/doctrine/doctrine-bundle/Repository/ServiceEntityRepository.php';
-        include_once \dirname(__DIR__, 4).'/src/Repository/DataUserSQLRepository.php';
 
         return $container->privates['App\\Repository\\DataUserSQLRepository'] = new \App\Repository\DataUserSQLRepository(($container->services['doctrine'] ?? self::getDoctrineService($container)));
     }

@@ -18,7 +18,6 @@ class getUserDataControllerService extends App_KernelDevDebugContainer
     public static function do($container, $lazyLoad = true)
     {
         include_once \dirname(__DIR__, 4).'/vendor/symfony/framework-bundle/Controller/AbstractController.php';
-        include_once \dirname(__DIR__, 4).'/src/Controller/UserDataController.php';
 
         $container->services['App\\Controller\\UserDataController'] = $instance = new \App\Controller\UserDataController();
 

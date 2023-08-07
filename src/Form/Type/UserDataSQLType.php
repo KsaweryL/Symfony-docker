@@ -25,7 +25,9 @@ class UserDataSQLType extends AbstractType
                 [
                     //   'required' => false,      //if we wanted to get rid of necessity of typing surname
                 ])
-            ->add('age', NumberType::class, )
+            ->add('age', NumberType::class,[
+                'required' => false
+            ] )
             ->add('email', EmailType::class, )
             ->add('password', TextType::class,
                 ['constraints' => new Length(['min'=>3]),

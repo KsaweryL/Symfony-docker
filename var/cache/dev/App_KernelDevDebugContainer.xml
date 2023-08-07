@@ -281,13 +281,6 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
-    <service id="App\Controller\LuckyController" class="App\Controller\LuckyController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\LuckyController"/>
-      </call>
-    </service>
     <service id="App\Controller\ProductController" class="App\Controller\ProductController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -302,11 +295,11 @@
         <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\TaskController"/>
       </call>
     </service>
-    <service id="App\Controller\UserController" class="App\Controller\UserController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\TestingController" class="App\Controller\TestingController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\UserController"/>
+        <argument type="service" id=".service_locator.O2p6Lk7.App\Controller\TestingController"/>
       </call>
     </service>
     <service id="App\Controller\UserDataSQLController" class="App\Controller\UserDataSQLController" public="true" autowire="true" autoconfigure="true">
@@ -3752,18 +3745,15 @@
       <argument type="service" id="maker.security_config_updater"/>
       <argument type="service" id="maker.security_controller_builder"/>
     </service>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LuckyController" class="App\Controller\LuckyController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LuckyController" class="App\Controller\LuckyController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\LuckyController" class="App\Controller\LuckyController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TaskController" class="App\Controller\TaskController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TaskController" class="App\Controller\TaskController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\TaskController" class="App\Controller\TaskController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserController" class="App\Controller\UserController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\UserController" class="App\Controller\UserController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TestingController" class="App\Controller\TestingController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TestingController" class="App\Controller\TestingController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\TestingController" class="App\Controller\TestingController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UserDataSQLController" class="App\Controller\UserDataSQLController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UserDataSQLController" class="App\Controller\UserDataSQLController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\UserDataSQLController" class="App\Controller\UserDataSQLController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4452,12 +4442,6 @@
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
-    <service id=".service_locator.O2p6Lk7.App\Controller\LuckyController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\LuckyController"/>
-      <argument>App\Controller\LuckyController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.O2p6Lk7" method="withContext"/>
-    </service>
     <service id=".service_locator.O2p6Lk7.App\Controller\ProductController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ProductController"/>
       <argument>App\Controller\ProductController</argument>
@@ -4470,9 +4454,9 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>
-    <service id=".service_locator.O2p6Lk7.App\Controller\UserController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\UserController"/>
-      <argument>App\Controller\UserController</argument>
+    <service id=".service_locator.O2p6Lk7.App\Controller\TestingController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\TestingController"/>
+      <argument>App\Controller\TestingController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.O2p6Lk7" method="withContext"/>
     </service>

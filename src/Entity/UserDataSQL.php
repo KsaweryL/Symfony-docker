@@ -21,13 +21,13 @@ class UserDataSQL
     #[ORM\Column(length: 255)]
     private ?string $surname = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $age = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?bool $checkbox = null;
 
     #[ORM\Column(length: 255)]
@@ -130,7 +130,10 @@ class UserDataSQL
 
     public function getDueDate(): string
     {
-        return $this->dueDate->format(DATE_RFC7231);
+        if($this->dueDate)
+            return $this->dueDate->format(DATE_RFC7231);
+        else
+            return 'none';
     }
 
     public function setDueDate(?\DateTimeInterface $dueDate): void

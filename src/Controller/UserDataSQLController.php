@@ -32,6 +32,26 @@ class UserDataSQLController extends AbstractController
     #[Route('/user_data_sql')]
     public function welcome(Request $request, EntityManagerInterface $entityManager): Response
     {
+        //whenever this route is reached, the method checks if admin's account is created and if not, does so
+        if (!$entityManager->getRepository(UserDataSQL::class)->findOneBy([
+            'email' => 'admin@email.com',
+            'password' => 'admin']))
+        {
+            $adminAccount = new UserDataSQL();
+            $adminAccount
+                ->setName("Admin")
+                ->setPassword("admin")
+                ->setSurname("Admin")
+                ->setAge(32)
+                ->setEmail("admin@email.com")
+                ->setCheckbox(true);
+
+            //admin's account is persisted and inputted into the database
+            $entityManager->persist($adminAccount);
+            $entityManager->flush();
+
+
+        }
         $currentDirectory = $request->getPathInfo();
         $loginDirectory = $this->append_string($currentDirectory, "/login");
         $signupDirectory = $this->append_string($currentDirectory, "/add");

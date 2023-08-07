@@ -1,0 +1,22 @@
+$primary-color: red;
+$secondary-color: blue;
+
+main {
+  a {
+    color: green;
+    //&.btn.btn-primary {
+    // color: green;
+    //////  -webkit-appearance: button;
+    //////  -moz-appearance: button;
+    //////  appearance: auto;
+    //////
+    //////  text-decoration: none;
+    //////  color: initial;
+    //}
+  }
+
+}
+
+h1 {
+  color: $primary-color;
+}

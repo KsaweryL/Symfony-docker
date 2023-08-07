@@ -1,0 +1,19 @@
+div{
+  color: #05c44f;
+  &.form-control{
+    color: #0523e8;
+    //background-color: #9adec7;
+  }
+}
+
+p{
+  &.password_error{
+    color: red;
+    font-family: fantasy;
+  }
+  &.name_error{
+    color: red;
+    font-family: "Copperplate Gothic Bold";
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,30 @@
+{# templates/user/userData.html.twig #}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+        body, html {
+            height: 100%;
+            color: #777;
+            line-height: 1.8;
+        }
+     </style>
+        </head>
+<body>
+
+
+<p>Name: {{ userData.name }}</p>
+<p>Surname: {{ userData.surname }}</p>
+<p>Age: {{ userData.age }}</p>
+{% if userData.checkbox %}
+    <p>Checkbox was ticked</p>
+{% else %}
+    <p>Checkbox wasn't ticked</p>
+{% endif %}
+
+</body>
+</html>
+

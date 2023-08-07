@@ -1,0 +1,41 @@
+{# templates/user/usersDisplay.html.twig #}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surame</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Task</th>
+        <th>Due date</th>
+        <th>Checkbox</th>
+
+    </tr>
+    {% for user in allUsers %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.surname }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.task }}</td>
+            <td>{{ user.duedate }}</td>
+            <td>{{ user.checkbox }}</td>
+        </tr>
+    {% endfor %}
+
+
+</table>
+
+</body>
+</html>
+

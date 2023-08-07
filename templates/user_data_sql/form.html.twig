@@ -1,0 +1,39 @@
+{# templates/task/new.html.twig #}
+{{ form_start(form) }}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/scss/form.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<style>
+
+</style>
+<body>
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="form-control">
+        {{ form_label(form) }}
+        {{ form_widget(form) }}
+
+        <small>{{ form_help(form) }}</small>
+
+        <div class="form-error">
+            {{ form_errors(form) }}
+        </div>
+    </div>
+
+    {% if signup == 1 %}
+        {% if  password|length <3  %}
+            <p class="password_error">The password must be at least 3 characters long<br></p>
+        {% endif %}
+            {% if  name|length <3  %}
+                <p class="name_error">Name must be at least 3 characters long</p>
+            {% endif %}
+    {% endif %}
+</body>
+</html>
+{{ form_end(form) }}

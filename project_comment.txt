@@ -1,0 +1,27 @@
+#comment
+this project uses dymfony and docker to create simple form
+
+it works well, time to move to the db project (symfony-docker-6) which will be a copy of this one with the addition of database
+
+//update 01.08.2023
+when hitting docker compose ps dockerized_sf_project-fpm-1 is clearly running, but for docker compose exec is clearly doesn't lmaoooo
+
+it turned out we shouldn't use compose with exec command...
+Nevertheless, the database is connected with the web page and it works great!
+I do have however one database too many and getting rid of it seems to be more complicated than I thought
+
+//update 01.08.2023
+the inclusion of database seems to be working corectly, now let's try to create a new project that will only use 1 database container (symfony-docker-6)
+
+//update 01.08.2023
+I managed to find a way to stop using one of the database containers without breaking the whole program
+
+//update currently working on this one...
+
+//update 03.08.2023
+UserDataSqlController contains routes for the main databse, rest of projects are either unfinished or made purely
+for testing some features
+
+//update 03.08.2023
+current task, try sth with form customization
+https://symfony.com/doc/current/form/form_customization.html#form-rendering-variables

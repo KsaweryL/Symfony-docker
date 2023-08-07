@@ -1,0 +1,18 @@
+div {
+  color: #05c44f;
+}
+div.form-control {
+  color: #0523e8;
+}
+
+p.password_error {
+  color: red;
+  font-family: fantasy;
+}
+p.name_error {
+  color: red;
+  font-family: "Copperplate Gothic Bold";
+  font-size: 20px;
+}
+
+/*# sourceMappingURL=form.css.map */

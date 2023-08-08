@@ -140,7 +140,10 @@ class __TwigTemplate_48b167154de2cf8be23d6dcb57cd32c9 extends Template
             echo "        <p style = \"position:absolute; left:80px; top:";
             echo twig_escape_filter($this->env, (isset($context["info_y_position"]) || array_key_exists("info_y_position", $context) ? $context["info_y_position"] : (function () { throw new RuntimeError('Variable "info_y_position" does not exist.', 47, $this->source); })()), "html", null, true);
             echo "px;\">
-            Information about the user:
+        <p style=\"position:absolute; left:80px; top:";
+            // line 48
+            echo twig_escape_filter($this->env, (isset($context["info_y_position"]) || array_key_exists("info_y_position", $context) ? $context["info_y_position"] : (function () { throw new RuntimeError('Variable "info_y_position" does not exist.', 48, $this->source); })()), "html", null, true);
+            echo "px;\"><strong>Information about the user:</strong></p>
             <div>
                  <p style = \"position:absolute; left:80px; top:";
             // line 50
@@ -233,7 +236,7 @@ class __TwigTemplate_48b167154de2cf8be23d6dcb57cd32c9 extends Template
 
     public function getDebugInfo()
     {
-        return array (  213 => 74,  205 => 69,  201 => 68,  196 => 66,  192 => 65,  187 => 63,  183 => 62,  178 => 60,  174 => 59,  169 => 57,  165 => 56,  160 => 54,  156 => 53,  151 => 51,  147 => 50,  140 => 47,  138 => 46,  135 => 45,  129 => 42,  124 => 41,  121 => 40,  119 => 39,  114 => 36,  108 => 33,  103 => 32,  100 => 31,  98 => 30,  93 => 27,  87 => 24,  82 => 23,  79 => 22,  77 => 21,  72 => 18,  66 => 15,  61 => 14,  58 => 13,  55 => 12,  43 => 1,);
+        return array (  216 => 74,  208 => 69,  204 => 68,  199 => 66,  195 => 65,  190 => 63,  186 => 62,  181 => 60,  177 => 59,  172 => 57,  168 => 56,  163 => 54,  159 => 53,  154 => 51,  150 => 50,  145 => 48,  140 => 47,  138 => 46,  135 => 45,  129 => 42,  124 => 41,  121 => 40,  119 => 39,  114 => 36,  108 => 33,  103 => 32,  100 => 31,  98 => 30,  93 => 27,  87 => 24,  82 => 23,  79 => 22,  77 => 21,  72 => 18,  66 => 15,  61 => 14,  58 => 13,  55 => 12,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -285,7 +288,7 @@ class __TwigTemplate_48b167154de2cf8be23d6dcb57cd32c9 extends Template
 
     {% if user != \"\" %}
         <p style = \"position:absolute; left:80px; top:{{ info_y_position }}px;\">
-            Information about the user:
+        <p style=\"position:absolute; left:80px; top:{{ info_y_position }}px;\"><strong>Information about the user:</strong></p>
             <div>
                  <p style = \"position:absolute; left:80px; top:{{ info_y_position +30 }}px;\">
                      Name: {{ user.name }}

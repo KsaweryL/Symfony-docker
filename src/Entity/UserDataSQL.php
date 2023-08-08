@@ -33,6 +33,10 @@ class UserDataSQL
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
+    //initially, none of the users is an admin
+    #[ORM\Column]
+    private ?bool $admin = false;
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $task = null;
 
@@ -42,6 +46,18 @@ class UserDataSQL
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function ifAdmin(): ?bool{
+        return $this->admin;
+    }
+
+    /**
+     * @param bool|null $admin
+     */
+    public function setAdmin(?bool $admin): void
+    {
+        $this->admin = $admin;
     }
 
     public function getName(): ?string

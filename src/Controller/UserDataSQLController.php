@@ -44,7 +44,10 @@ class UserDataSQLController extends AbstractController
                 ->setSurname("Admin")
                 ->setAge(32)
                 ->setEmail("admin@email.com")
-                ->setCheckbox(true);
+                ->setCheckbox(true)
+            ->setAdmin(true);
+            //$adminAccount->setId(0);      //doesn't matter, since persist() then changes it
+
 
             //admin's account is persisted and inputted into the database
             $entityManager->persist($adminAccount);
@@ -160,7 +163,12 @@ class UserDataSQLController extends AbstractController
     #[Route('/user_data_sql/delete/{email}/{password}', name: 'user_data_delete')]
     public function delete(string $email, string $password,Request $request, EntityManagerInterface $entityManager): Response
     {
-        if($email == 'admin@email.com' && $password == 'admin') {
+        //if admin's email and password is detected, proceed        //fix
+        if($email == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
+            'admin' => 1
+            ])->getEmail() && $password == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
+                'admin' => 1
+            ])->getPassword()) {
             $userData = new UserDataSQL();
             $form = $this->createForm(UserDataSQLType::class, $userData);
             $form->handleRequest($request);
@@ -172,9 +180,7 @@ class UserDataSQLController extends AbstractController
                 $userToBeDeleted = $entityManager->getRepository(UserDataSQL::class)->findOneBy(
                     ['name' => $form->getName(),
                         'surname' => $form->getSurname(),
-                        'age' => $form->getAge(),
-                        'email' => $form->getEmail(),
-                        'checkbox' => $form->isCheckbox()]);
+                        'email' => $form->getEmail()]);
 
                 //checking is user exists
                 if ($userToBeDeleted) {
@@ -211,7 +217,11 @@ class UserDataSQLController extends AbstractController
     #[Route('/user_data_sql/display/{email}/{password}', name: 'user_data_display')]
     public function display(string $email, string $password,EntityManagerInterface $entityManager): Response
     {
-        if($email == 'admin@email.com' && $password == 'admin') {
+        if($email == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
+                'admin' => 1
+            ])->getEmail() && $password == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
+                'admin' => 1
+            ])->getPassword()) {
             $userData = new UserDataSQL();
             $form = $this->createForm(UserDataSQLType::class, $userData);
 
@@ -257,7 +267,11 @@ class UserDataSQLController extends AbstractController
             if($user->getDueDate()) $userDueDate = $user->getDueDate();
             else $userDueDate = "none";
 
-            if ($email == 'admin@email.com' && $password == 'admin') {
+            if ($email == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
+                    'admin' => 1
+                ])->getEmail() && $password == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
+                    'admin' => 1
+                ])->getPassword()) {
                 $userUpdateUrlDisplay = str_replace('panel', 'display', $currentDirectory);
                 $userUpdateUrlDelete = str_replace('panel', 'delete', $currentDirectory);
                 return $this->render('user/button/btn.html.twig', [

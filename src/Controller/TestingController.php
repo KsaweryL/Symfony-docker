@@ -51,6 +51,17 @@ class TestingController extends AbstractController
         return $this->render('test/scss/index.html.twig');
     }
 
+    #[Route('/js_test')]
+    public function js_scss(): Response
+    {
+        $number = 2;
+        $actualUrl = 'http://localhost:10301/test';
+        $obfuscatedUrl = $this->obfuscateUrl($actualUrl);
+
+        return $this->render('test/JS_test.html.twig');
+        //return $this->render('test/js/main.html.twig');       //breakpoints don't work there
+    }
+
     #[Route('/scss_file', name: 'scss_file')]
     public function scss_file(): Response
     {

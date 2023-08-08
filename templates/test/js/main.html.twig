@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Time right now is: </title>
+</head>
+<body>
+
+<script>
+function displayImage(src, width, height) {
+    var img = document.createElement("img");
+    img.src = src;
+    img.width = width;
+    img.height = height;
+    document.body.appendChild(img);
+}
+
+const myImage = document.createElement("img");
+myImage.src = "js/images/blue-aesthetic-moon.png";
+
+myImage.onclick = () => {
+    const mySrc = myImage.getAttribute("src");
+    if (mySrc === "js/images/47823.png") {
+        myImage.setAttribute("src", "js/images/blue-aesthetic-moon.png");
+    } else {
+        myImage.setAttribute("src", "js/images/47823.png");
+    }
+};
+
+//breakpoints don't work
+
+document.body.appendChild(myImage);
+
+</script>
+</body>
+</html>

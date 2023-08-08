@@ -1,6 +1,7 @@
 <?php
 // src/Controller/LuckyController.php
 //used also for testing various features
+//test
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;

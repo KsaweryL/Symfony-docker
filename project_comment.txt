@@ -3,3 +3,6 @@
 //update 03.08.2023
 current task, try sth with form customization
 https://symfony.com/doc/current/form/form_customization.html#form-rendering-variables
+
+//update 08.08.2023
+add separate database so that each user can have couple of tasks assigned to them

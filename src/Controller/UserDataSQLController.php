@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\SelectUser;
 use App\Entity\UserDataSQL;
 use App\Entity\WelcomePage;
 use App\Entity\LoginPage;
 use App\Form\Type\UserDataSQLType;
 use App\Form\Type\LoginPageType;
 use App\Form\Type\UserDataSQLUpdateType;
+use App\Form\Type\SelectUserType;
 use App\Form\Type\WelcomePageType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -169,8 +171,12 @@ class UserDataSQLController extends AbstractController
             ])->getEmail() && $password == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
                 'admin' => 1
             ])->getPassword()) {
-            $userData = new UserDataSQL();
-            $form = $this->createForm(UserDataSQLType::class, $userData);
+//            $userData = new UserDataSQL();
+//            $form = $this->createForm(UserDataSQLType::class, $userData);
+//            $form->handleRequest($request);
+
+            $userData = new SelectUser();
+            $form = $this->createForm(SelectUserType::class, $userData);
             $form->handleRequest($request);
 
             //detecting if the input is correct
@@ -198,7 +204,7 @@ class UserDataSQLController extends AbstractController
                 }
 
             } else {
-                $form = $this->createForm(UserDataSQLType::class, $userData);
+                $form = $this->createForm(SelectUserType::class, $userData);
             }
 
             return $this->render('user_data_sql/form.html.twig', [

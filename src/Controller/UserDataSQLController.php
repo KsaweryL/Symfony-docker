@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\SelectUser;
 use App\Entity\UserDataSQL;
+use App\Entity\UsersTasks;
 use App\Entity\WelcomePage;
 use App\Entity\LoginPage;
 use App\Form\Type\UserDataSQLType;
@@ -69,6 +70,8 @@ class UserDataSQLController extends AbstractController
             'text3' => "",
             'url4' => "",
             'text4' => "",
+            'url5' => "",
+            'text5' => "",
             'user' => ""
         ]);
 
@@ -259,6 +262,10 @@ class UserDataSQLController extends AbstractController
     {
         //determining the user
         $user = $entityManager->getRepository(UserDataSQL::class)->findOneBy(['email' => $email, 'password' => $password]);
+        #determining user's tasks
+        $userTasks = $entityManager->getRepository(UsersTasks::class)->findBy([
+            'user_id' => $user->getId()
+        ]);
         if (!$user) {
             throw $this->createNotFoundException(
                 'No user found'
@@ -269,6 +276,7 @@ class UserDataSQLController extends AbstractController
             $currentDirectory = $request->getPathInfo();
             $userUpdateUrl = str_replace('panel', 'update', $currentDirectory);
             $userUpdateUrlTask = str_replace('panel', 'task', $currentDirectory);
+            $userUpdateUrlDeleteTask = str_replace('panel', 'delete_task', $currentDirectory);
             //due to its unusual structure, it needs to be passed separately
             if($user->getDueDate()) $userDueDate = $user->getDueDate();
             else $userDueDate = "none";
@@ -285,12 +293,15 @@ class UserDataSQLController extends AbstractController
                     'text' => "Update info",
                     'url2' => $userUpdateUrlTask,
                     'text2' => "Add a task",
-                    'url3' => $userUpdateUrlDisplay,
-                    'text3' => "Display users",
-                    'url4' => $userUpdateUrlDelete,
-                    'text4' => "Delete a user",
+                    'url3' => $userUpdateUrlDeleteTask,
+                    'text3' => "Delete a task",
+                    'url4' => $userUpdateUrlDisplay,
+                    'text4' => "Display users",
+                    'url5' => $userUpdateUrlDelete,
+                    'text5' => "Delete a user",
                     'user' => $user,
-                    'userDueDate' => $userDueDate
+                    'userDueDate' => $userDueDate,
+                    'userTasks' => $userTasks
                 ]);
             } else {
                 return $this->render('user/button/btn.html.twig', [
@@ -298,12 +309,15 @@ class UserDataSQLController extends AbstractController
                     'text' => "Update info",
                     'url2' => $userUpdateUrlTask,
                     'text2' => "Add a task",
-                    'url3' => "",
-                    'text3' => "",
+                    'url3' => $userUpdateUrlDeleteTask,
+                    'text3' => "Delete a task",
                     'url4' => "",
                     'text4' => "",
+                    'url5' => "",
+                    'text5' => "",
                     'user' => $user,
-                    'userDueDate' => $userDueDate
+                    'userDueDate' => $userDueDate,
+                    'userTasks' => $userTasks
                 ]);
             }
         }

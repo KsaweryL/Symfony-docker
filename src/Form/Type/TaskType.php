@@ -21,6 +21,7 @@ class TaskType extends AbstractType
                 [
                     'required' => $options['require_due_date'],
                     'label' => 'To Be Completed Before',
+                    'disabled' => $options['disable_due_date']
                 ])
             ->add('save', SubmitType::class)
         ;
@@ -31,10 +32,12 @@ class TaskType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Task::class,
             'require_due_date' => false,            //changes the default "
+            'disable_due_date' => false
         ]);
 
         // you can also define the allowed types, allowed values and
         // any other feature supported by the OptionsResolver component
         $resolver->setAllowedTypes('require_due_date', 'bool');
+        $resolver->setAllowedTypes('disable_due_date', 'bool');
     }
 }

@@ -43,6 +43,15 @@
         </a>
     {% endif %}
 
+    <br>
+    <br>
+    {% if url5 != "" %}
+        {% set info_y_position = 320 %}
+        <a href="{{ url5 }}" class="btn btn-info" role="button" style = "position:absolute; left:80px; top:260px;">
+            {{ text5 }}
+        </a>
+    {% endif %}
+
     {% if user != "" %}
         <p style = "position:absolute; left:80px; top:{{ info_y_position }}px;">
         <p style="position:absolute; left:80px; top:{{ info_y_position }}px;"><strong>Information about the user:</strong></p>
@@ -63,14 +72,33 @@
                     Checkbox: {{ user.checkbox }}
                 </p>
                 <p style = "position:absolute; left:80px; top:{{ info_y_position +180 }}px;">
-                    Task: {{ user.task }}
+                    Latest task: {{ user.task }}
                 </p>
                 <p style = "position:absolute; left:80px; top:{{ info_y_position +210 }}px;">
                     Due date: {{ userDueDate}}
                 </p>
             </div>
-        </p>
-    {% endif %}
+
+    {% set info_y_position = info_y_position + 260 %}
+{#        table related#}
+        <table style="position:absolute; left:80px; top:{{ info_y_position }}px;">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+            <tr>
+            <th>Id</th>
+            <th>Task</th>
+            <th>Due date</th>
+
+            </tr>
+            {% for task in userTasks %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.task }}</td>
+                    <td>{{ task.duedate }}</td>
+                </tr>
+            {% endfor %}
+            </p>
+        {% endif %}
+        </table>
 </main>
 </body>
 </html>

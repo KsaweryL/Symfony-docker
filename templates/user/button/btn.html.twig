@@ -57,7 +57,7 @@
         <p style="position:absolute; left:80px; top:{{ info_y_position }}px;"><strong>Information about the user:</strong></p>
             <div>
                  <p style = "position:absolute; left:80px; top:{{ info_y_position +30 }}px;">
-                     Name: {{ user.name }}
+                     Name: <div id = "userName" style = "position:absolute; left:130px; top:{{ info_y_position +30 }}px;">{{ user.name }}</div>
                  </p>
                 <p style = "position:absolute; left:80px; top:{{ info_y_position +60 }}px;">
                     Surname: {{ user.surname }}
@@ -99,6 +99,8 @@
             </p>
         {% endif %}
         </table>
+
+    <script src="/js/user/userPanel.js"></script>
 </main>
 </body>
 </html>

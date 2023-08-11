@@ -96,21 +96,24 @@
                     <td>{{ task.id }}</td>
                     <td>{{ task.task }}</td>
                     <td>{{ task.duedate }}</td>
-                    {% if task.taskStatus == false %}
-                        <td>No</td>
-                    {% else %}
-                        <td>Yes</td>
-                    {% endif %}
+                    <td id="taskStatus">No</td>
+{#                    {% if task.taskStatus == false %}#}
+{#                        <td>No</td>#}
+{#                    {% else %}#}
+{#                        <td>Yes</td>#}
+{#                    {% endif %}#}
 {#                    putting checkbox after taskStatus#}
-                    <td><input type="checkbox" id="accept"> Accept</td>
+                    <td>
+
+                        <input type="checkbox" id="my-checkbox" onclick="isChecked()"> Accept
+                        <p id="taskStatus_message">Not Checked</p>
+                        <script src="/js/user/userPanel.js"></script>
+                    </td>
                 </tr>
             {% endfor %}
             </p>
         {% endif %}
         </table>
-    <div>
-        <script src="/js/user/userPanel.js"></script>
-    </div>
 </main>
 </body>
 </html>

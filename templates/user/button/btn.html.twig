@@ -88,6 +88,7 @@
             <th>Task</th>
             <th>Due date</th>
                 <th>Is task already done?</th>
+                <th></th>
 
             </tr>
             {% for task in userTasks %}
@@ -100,13 +101,16 @@
                     {% else %}
                         <td>Yes</td>
                     {% endif %}
+{#                    putting checkbox after taskStatus#}
+                    <td><input type="checkbox" id="accept"> Accept</td>
                 </tr>
             {% endfor %}
             </p>
         {% endif %}
         </table>
-
-    <script src="/js/user/userPanel.js"></script>
+    <div>
+        <script src="/js/user/userPanel.js"></script>
+    </div>
 </main>
 </body>
 </html>

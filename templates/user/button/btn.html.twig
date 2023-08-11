@@ -87,6 +87,7 @@
             <th>Id</th>
             <th>Task</th>
             <th>Due date</th>
+                <th>Is task already done?</th>
 
             </tr>
             {% for task in userTasks %}
@@ -94,6 +95,11 @@
                     <td>{{ task.id }}</td>
                     <td>{{ task.task }}</td>
                     <td>{{ task.duedate }}</td>
+                    {% if task.taskStatus == false %}
+                        <td>No</td>
+                    {% else %}
+                        <td>Yes</td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </p>

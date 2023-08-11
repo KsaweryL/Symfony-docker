@@ -55,6 +55,7 @@ class TaskController extends AbstractController
                 $newTask ->setTask($task->getTask());
                 $newTask ->setDueDate($task->getDueDate());
                 $newTask -> setUserId($userDataChangedTask->getId());
+                $newTask->setTaskStatus(false);                 //set initial status of the task as: not done
                 $entityManager->persist($newTask);
                 $entityManager->flush();
 

@@ -18,6 +18,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class UserDataSQLController extends AbstractController
 {
@@ -237,6 +241,24 @@ class UserDataSQLController extends AbstractController
             $form = $form->getData();
             $allUsers = $entityManager->getRepository(UserDataSQL::class)->findAll();
 
+            //serialising information about the user to json
+            $encoders = [new XmlEncoder(), new JsonEncoder()];
+            $normalizers = [new ObjectNormalizer()];
+
+            $serializer = new Serializer($normalizers, $encoders);
+
+            $usersJson = $serializer->serialize($allUsers, 'json');
+            //decoding json data and converting it int associative array
+            $usersDecoded = json_decode($usersJson, true);
+            // File pointer in writable mode
+//            $file_pointer = fopen('csv/user.csv', 'w');
+//            foreach($usersDecoded as $i){
+//                // Write the data to the CSV file
+//                fputcsv($file_pointer, $i);
+//            }
+//            // Close the file pointer.
+//            fclose($file_pointer);
+
             //in case there were no user in the database
             if (!$allUsers) {
                 return new Response(
@@ -246,6 +268,8 @@ class UserDataSQLController extends AbstractController
 
                 return $this->render('user/usersDisplay.html.twig', [
                     'allUsers' => $allUsers,
+                    'usersJson' => $usersJson,
+                    'usersArray' => $usersDecoded
                 ]);
             }
         }
@@ -272,6 +296,27 @@ class UserDataSQLController extends AbstractController
             );
         }
         else {
+            //serialising information about the user to json
+            $encoders = [new XmlEncoder(), new JsonEncoder()];
+            $normalizers = [new ObjectNormalizer()];
+
+            $serializer = new Serializer($normalizers, $encoders);
+
+            //getting all users
+            $usersAll = $entityManager->getRepository(UserDataSQL::class)->findAll();
+
+            $usersJson = $serializer->serialize($usersAll, 'json');
+            //decoding json data and converting it int associative array
+            $usersDecoded = json_decode($usersJson, true);
+            // File pointer in writable mode
+//            $file_pointer = fopen('csv/user.csv', 'w');
+//            foreach($usersDecoded as $i){
+//                // Write the data to the CSV file
+//                fputcsv($file_pointer, $i);
+//            }
+//            // Close the file pointer.
+//            fclose($file_pointer);
+
             //displaying the buttons as well as info
             $currentDirectory = $request->getPathInfo();
             $userUpdateUrl = str_replace('panel', 'update', $currentDirectory);

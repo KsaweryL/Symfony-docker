@@ -1,8 +1,13 @@
 {
   "dependencies": {
+    "@grapecity/spread-excelio": "^16.2.0",
+    "@grapecity/spread-sheets": "^16.2.0",
     "bootstrap": "^5.3.1",
     "devextreme-dist": "23.1.4",
-    "jquery": "^3.7.0"
+    "exceljs": "^4.3.0",
+    "file-saver": "^2.0.5",
+    "jquery": "^3.7.0",
+    "jspdf": "^2.5.1"
   },
   "type": "module"
 }

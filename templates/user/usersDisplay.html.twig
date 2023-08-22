@@ -16,8 +16,18 @@
 
     <script type="text/javascript" src="https://cdn3.devexpress.com/jslib/23.1.4/js/dx.all.js"></script>
     <script type="text/javascript" src="/js/dataGrid.js"></script>
-{#    <script type="module" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>#}
+
+    <!-- Export to Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.4.0/polyfill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.1.1/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+
+    <!-- Reference the DevExtreme sources here -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.0.0/jspdf.umd.min.js"></script>
+
+    {#    <script type="module" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>#}
 </head>
+
 {#<body class="dx-viewport">#}
 {#initial table#}
 {#<table>#}
@@ -48,9 +58,7 @@
 {#</table>#}
 
 
-<body class="dx-viewport" id="blabla">
-{#   <div id="usersJson">{{ usersJson }}</div>#}
-{#    <div data-usersArray= usersArray ></div>#}
+<body class="dx-viewport">
     <div type="module" id="dataGrid"></div>
 </body>
 </html>

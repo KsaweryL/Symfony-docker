@@ -41,8 +41,7 @@ class UserDataSQLController extends AbstractController
     {
         //whenever this route is reached, the method checks if admin's account is created and if not, does so
         if (!$entityManager->getRepository(UserDataSQL::class)->findOneBy([
-            'email' => 'admin@email.com',
-            'password' => 'admin']))
+            'admin' => true]))
         {
             $adminAccount = new UserDataSQL();
             $adminAccount
@@ -175,7 +174,8 @@ class UserDataSQLController extends AbstractController
         //if admin's email and password is detected, proceed        //fix
         if($email == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
             'admin' => 1
-            ])->getEmail() && $password == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
+            ])->getEmail()
+            && $password == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
                 'admin' => 1
             ])->getPassword()) {
 //            $userData = new UserDataSQL();
@@ -232,32 +232,11 @@ class UserDataSQLController extends AbstractController
     {
         if($email == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
                 'admin' => 1
-            ])->getEmail() && $password == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
+            ])->getEmail()
+            && $password == $entityManager->getRepository(UserDataSQL::class)->findOneBy([
                 'admin' => 1
             ])->getPassword()) {
-            $userData = new UserDataSQL();
-            $form = $this->createForm(UserDataSQLType::class, $userData);
-
-            $form = $form->getData();
             $allUsers = $entityManager->getRepository(UserDataSQL::class)->findAll();
-
-            //serialising information about the user to json
-            $encoders = [new XmlEncoder(), new JsonEncoder()];
-            $normalizers = [new ObjectNormalizer()];
-
-            $serializer = new Serializer($normalizers, $encoders);
-
-            $usersJson = $serializer->serialize($allUsers, 'json');
-            //decoding json data and converting it int associative array
-            $usersDecoded = json_decode($usersJson, true);
-            // File pointer in writable mode
-//            $file_pointer = fopen('csv/user.csv', 'w');
-//            foreach($usersDecoded as $i){
-//                // Write the data to the CSV file
-//                fputcsv($file_pointer, $i);
-//            }
-//            // Close the file pointer.
-//            fclose($file_pointer);
 
             //in case there were no user in the database
             if (!$allUsers) {
@@ -267,9 +246,7 @@ class UserDataSQLController extends AbstractController
             } else {
 
                 return $this->render('user/usersDisplay.html.twig', [
-                    'allUsers' => $allUsers,
-                    'usersJson' => $usersJson,
-                    'usersArray' => $usersDecoded
+                    'allUsers' => $allUsers
                 ]);
             }
         }

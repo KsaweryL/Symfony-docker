@@ -43,12 +43,15 @@ class UserDataSQL
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     protected ?\DateTimeInterface $dueDate;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $dueDateString = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function ifAdmin(): ?bool{
+    public function isAdmin(): ?bool{
         return $this->admin;
     }
 
@@ -146,8 +149,9 @@ class UserDataSQL
 
     public function getDueDate(): string
     {
-        if($this->dueDate)
-            return $this->dueDate->format(DATE_RFC7231);
+        if($this->dueDateString)
+            //return $this->dueDate->format(DATE_RFC7231);
+            return $this->dueDateString;
         else
             return 'none';
     }
@@ -155,6 +159,12 @@ class UserDataSQL
     public function setDueDate(?\DateTimeInterface $dueDate): void
     {
         $this->dueDate = $dueDate;
+        $this->dueDateString = $dueDate->format(DATE_RFC7231);
+    }
+
+    public function setDueDateFromString(string $newDueDate): void
+    {
+        $this->dueDateString = $newDueDate;
     }
 
 }

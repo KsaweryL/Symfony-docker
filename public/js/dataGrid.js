@@ -1,6 +1,5 @@
 // import $ from "jquery";
 //apparently json file cannot be used, only an array
-let usersJson = document.getElementById("usersJson")
 
 $(document).ready(function() {
     $.ajax({
@@ -23,11 +22,12 @@ $(document).ready(function() {
                 dataSource: data.usersJson,
                 keyExpr: "id",
                 paging: {
-                    pageSize: 10,
+                    pageSize: 15,
                 },
+                columnMinWidth: 50,
                 pager: {
                     visible: true,
-                    allowedPageSizes: [5, 10, 'all'],
+                    allowedPageSizes: [5, 15, 'all'],
                     showPageSizeSelector: true,
                     showInfo: true,
                     showNavigationButtons: true,
@@ -38,13 +38,33 @@ $(document).ready(function() {
                     allowDeleting: true,
                     allowAdding: true,
                 },
+                //exporting data to the controller
+                onSaved() {
+                    // logEvent('Saved');
+                    $.post( "/user_data_sql/fromGridToDB",{
+                        changedData: data
+                    });
+                },
+                export: {
+                    enabled: true,
+                    allowExportSelectedData: true,
+                },
+                onExporting(e) {
+                    const workbook = new ExcelJS.Workbook();
+                    const worksheet = workbook.addWorksheet('Users');
+
+                    DevExpress.excelExporter.exportDataGrid({
+                        component: e.component,
+                        worksheet,
+                        autoFilterEnabled: true,
+                    }).then(() => {
+                        workbook.xlsx.writeBuffer().then((buffer) => {
+                            saveAs(new Blob([buffer], { type: 'application/octet-stream' }), 'users.xlsx');
+                        });
+                    });
+                    e.cancel = true;
+                }
             });
         });
     });
 });
-
-//getting information from datagrid
-//cannot find gridInstance...
-var allGridItems = gridInstance.getDataSource().items();
-
-var lol = 2;
